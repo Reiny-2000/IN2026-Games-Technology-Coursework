@@ -6,8 +6,9 @@
   Asteroids.cpp
   Asteroid.cpp
   Generating Code...
+  LINK : ..\..\bin\Asteroids.exe not found or not built by the last incremental link; performing full link
 Asteroid.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
-  Asteroids.vcxproj -> C:\Users\reinh\Downloads\IN2026 Coursework Code\IN2026 Coursework Code\bin\Asteroids.exe
+  Asteroids.vcxproj -> C:\Users\reinh\source\repos\IN2026-Games-Technology-Coursework4\bin\Asteroids.exe
   ..\..\assets\asteroid.shape
   ..\..\assets\asteroid1_fs.png
   ..\..\assets\bullet.shape
