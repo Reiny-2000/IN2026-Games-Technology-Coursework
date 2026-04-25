@@ -2,7 +2,7 @@
 #include "GameUtil.h"
 #include "Asteroid.h"
 #include "BoundingShape.h"
-
+#include "Asteroids.h"
 Asteroid::Asteroid(void) : GameObject("Asteroid")
 {
 	mAngle = rand() % 360;
@@ -15,8 +15,11 @@ Asteroid::Asteroid(void) : GameObject("Asteroid")
 	mVelocity.z = 0.0;
 }
 
+
+
 Asteroid::~Asteroid(void)
 {
+
 }
 
 bool Asteroid::CollisionTest(shared_ptr<GameObject> o)
@@ -27,7 +30,9 @@ bool Asteroid::CollisionTest(shared_ptr<GameObject> o)
 	return mBoundingShape->CollisionTest(o->GetBoundingShape());
 }
 
-void Asteroid::OnCollision(const GameObjectList& objects)
-{
+void Asteroid::OnCollision(const GameObjectList& objects) { 
+	void CreateChildAsteroids(GetPosition().x, GetPosition().y);
 	mWorld->FlagForRemoval(GetThisPtr());
 }
+
+
