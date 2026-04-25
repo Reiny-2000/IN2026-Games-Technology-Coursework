@@ -8,7 +8,6 @@
 #include "IScoreListener.h" 
 #include "ScoreKeeper.h"
 #include "Player.h"
-#include "ChildAsteroid.h"
 #include "IPlayerListener.h"
 
 class GameObject;
@@ -49,7 +48,7 @@ public:
 	void OnTimer(int value);
 	
 	// Allows for three new asteroids to spawn in after parent asteroid is destroyed.
-	void CreateChildAsteroids(uint parent_position_x, uint parent_position_y);
+	//void CreateChildAsteroids(uint parent_position_x, uint parent_position_y);
 
 private:
 	shared_ptr<Spaceship> mSpaceship;

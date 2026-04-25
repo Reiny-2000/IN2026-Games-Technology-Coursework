@@ -1,3 +1,16 @@
-﻿Asteroid.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
-Asteroids.obj : error LNK2019: unresolved external symbol "public: __thiscall ChildAsteroid::ChildAsteroid(void)" (??0ChildAsteroid@@QAE@XZ) referenced in function "void __cdecl std::_Construct_in_place<class ChildAsteroid>(class ChildAsteroid &)" (??$_Construct_in_place@VChildAsteroid@@$$V@std@@YAXAAVChildAsteroid@@@Z)
-..\..\bin\Asteroids.exe : fatal error LNK1120: 1 unresolved externals
+﻿cl : command line  warning D9035: option 'Gm' has been deprecated and will be removed in a future release
+  Asteroids.cpp
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  main.cpp
+  Asteroid.cpp
+Asteroid.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+  Asteroids.vcxproj -> C:\Users\reinh\source\repos\IN2026-Games-Technology-Coursework5\bin\Asteroids.exe
+  ..\..\assets\asteroid.shape
+  ..\..\assets\asteroid1_fs.png
+  ..\..\assets\bullet.shape
+  ..\..\assets\explosion_fs.png
+  ..\..\assets\spaceship.shape
+  ..\..\assets\spaceship_fs.png
+  ..\..\assets\thruster.shape
+          7 file(s) copied.

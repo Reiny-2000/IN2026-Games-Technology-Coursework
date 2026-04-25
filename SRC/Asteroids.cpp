@@ -1,5 +1,4 @@
 #include "Asteroid.h"
-#include "ChildAsteroid.h"
 #include "Asteroids.h"
 #include "Animation.h"
 #include "AnimationManager.h"
@@ -214,22 +213,22 @@ void Asteroids::CreateAsteroids(const uint num_asteroids)
 
 
 
-void Asteroids::CreateChildAsteroids(uint parent_position_x, uint parent_position_y)
-{
-	for (uint i = 0; i < 3; i++)
-	{
-		Animation* anim_ptr = AnimationManager::GetInstance().GetAnimationByName("asteroid1");
-		shared_ptr<Sprite> asteroid_sprite
-			= make_shared<Sprite>(anim_ptr->GetWidth(), anim_ptr->GetHeight(), anim_ptr);
-		asteroid_sprite->SetLoopAnimation(true);
-		shared_ptr<GameObject> child_asteroid = make_shared<ChildAsteroid>();
-		child_asteroid->SetBoundingShape(make_shared<BoundingSphere>(child_asteroid->GetThisPtr(), 10.0f));
-		child_asteroid->SetSprite(asteroid_sprite);
-		child_asteroid->SetScale(0.2f);
-		child_asteroid->SetPosition(GLVector3f(parent_position_x + (rand() % 4 - 3), parent_position_y + (rand() % 4 - 3), 0));
-		mGameWorld->AddObject(child_asteroid);
-	}
-}
+//void Asteroids::CreateChildAsteroids(uint parent_position_x, uint parent_position_y)
+//{
+//	for (uint i = 0; i < 3; i++)
+//	{
+//		Animation* anim_ptr = AnimationManager::GetInstance().GetAnimationByName("asteroid1");
+//		shared_ptr<Sprite> asteroid_sprite
+//			= make_shared<Sprite>(anim_ptr->GetWidth(), anim_ptr->GetHeight(), anim_ptr);
+//		asteroid_sprite->SetLoopAnimation(true);
+//		shared_ptr<GameObject> child_asteroid = make_shared<ChildAsteroid>();
+//		child_asteroid->SetBoundingShape(make_shared<BoundingSphere>(child_asteroid->GetThisPtr(), 10.0f));
+//		child_asteroid->SetSprite(asteroid_sprite);
+//		child_asteroid->SetScale(0.2f);
+//		child_asteroid->SetPosition(GLVector3f(parent_position_x + (rand() % 4 - 3), parent_position_y + (rand() % 4 - 3), 0));
+//		mGameWorld->AddObject(child_asteroid);
+//	}
+//}
 
 void Asteroids::CreateGUI()
 {
