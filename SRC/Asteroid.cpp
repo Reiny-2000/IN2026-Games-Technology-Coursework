@@ -7,7 +7,7 @@ Asteroid::Asteroid(void) : GameObject("Asteroid")
 {
 	mAngle = rand() % 360;
 	mRotation = 0; // rand() % 90;
-	mPosition.x = rand() / 2;
+	mPosition.x = rand() / 2	;
 	mPosition.y = rand() / 2;
 	mPosition.z = 0.0;
 	mVelocity.x = 10.0 * cos(DEG2RAD*mAngle);
@@ -30,9 +30,8 @@ bool Asteroid::CollisionTest(shared_ptr<GameObject> o)
 	return mBoundingShape->CollisionTest(o->GetBoundingShape());
 }
 
-void Asteroid::OnCollision(const GameObjectList& objects) { 
-	void CreateChildAsteroids(GetPosition().x, GetPosition().y);
-	mWorld->FlagForRemoval(GetThisPtr());
-}
+	void Asteroid::OnCollision(const GameObjectList& objects) { 
+		mWorld->FlagForRemoval(GetThisPtr());
+	}
 
 

@@ -5,22 +5,19 @@
 #include "Asteroids.h"
 #include "ChildAsteroid.h"
 
-ChildAsteroid:: ChildAsteroid(parent_position_x, parent_position_y) : Asteroid()
+ChildAsteroid:: ChildAsteroid() : Asteroid ()
 {
 	mAngle = rand() % 360;
 	mRotation = 0; // rand() % 90;
-	mPosition.x = parent_position;
-	mPosition.y = parent_position;
-	mPosition.z = 0.0;
-	mVelocity.x = 10.0 * cos(DEG2RAD * mAngle);
-	mVelocity.y = 10.0 * sin(DEG2RAD * mAngle);
+	mVelocity.x = ( rand() % 6) * cos(DEG2RAD * mAngle);
+	mVelocity.y = (rand() % 6) * sin(DEG2RAD * mAngle);
 	mVelocity.z = 0.0;
 	
 }
  
 
 
-ChildAsteroid::~Asteroid(void)
+ChildAsteroid::~ChildAsteroid(void)
 {
 
 }

@@ -5,7 +5,7 @@
 
 class ChildAsteroid : public Asteroid {
 public:
-	ChildAsteroid(void);
+	ChildAsteroid();
 	~ChildAsteroid(void);
 
 	bool CollisionTest(shared_ptr<GameObject> o);

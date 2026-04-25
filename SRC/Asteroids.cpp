@@ -62,7 +62,7 @@ void Asteroids::Start()
 	// Create a spaceship and add it to the world
 	mGameWorld->AddObject(CreateSpaceship());
 	// Create some asteroids and add them to the world
-	CreateAsteroids(10);
+	CreateAsteroids(2);
 
 	//Create the GUI
 	CreateGUI();
@@ -141,6 +141,7 @@ void Asteroids::OnObjectRemoved(GameWorld* world, shared_ptr<GameObject> object)
 		explosion->SetPosition(object->GetPosition());
 		explosion->SetRotation(object->GetRotation());
 		mGameWorld->AddObject(explosion);
+		
 		mAsteroidCount--;
 		if (mAsteroidCount <= 0) 
 		{ 
@@ -162,7 +163,7 @@ void Asteroids::OnTimer(int value)
 	if (value == START_NEXT_LEVEL)
 	{
 		mLevel++;
-		int num_asteroids = 10 + 2 * mLevel;
+		int num_asteroids = 2 + mLevel;
 		CreateAsteroids(num_asteroids);
 	}
 
@@ -221,13 +222,12 @@ void Asteroids::CreateChildAsteroids(uint parent_position_x, uint parent_positio
 		shared_ptr<Sprite> asteroid_sprite
 			= make_shared<Sprite>(anim_ptr->GetWidth(), anim_ptr->GetHeight(), anim_ptr);
 		asteroid_sprite->SetLoopAnimation(true);
-		shared_ptr<GameObject> asteroid = make_shared<Asteroid>();
-		asteroid->SetBoundingShape(make_shared<BoundingSphere>(asteroid->GetThisPtr(), 10.0f));
-		asteroid->SetSprite(asteroid_sprite);
-		asteroid->SetScale(0.2f);
-		asteroid->SetPosition(parent_position_x + rand_offset_x,
-			parent_position_y + rand_offset_y);
-		mGameWorld->AddObject(asteroid);
+		shared_ptr<GameObject> child_asteroid = make_shared<ChildAsteroid>();
+		child_asteroid->SetBoundingShape(make_shared<BoundingSphere>(child_asteroid->GetThisPtr(), 10.0f));
+		child_asteroid->SetSprite(asteroid_sprite);
+		child_asteroid->SetScale(0.2f);
+		child_asteroid->SetPosition(GLVector3f(parent_position_x + (rand() % 4 - 3), parent_position_y + (rand() % 4 - 3), 0));
+		mGameWorld->AddObject(child_asteroid);
 	}
 }
 
