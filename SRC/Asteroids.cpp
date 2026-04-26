@@ -11,6 +11,7 @@
 #include "BoundingSphere.h"
 #include "GUILabel.h"
 #include "Explosion.h"
+#include "ExtraLife.h"
 
 // PUBLIC INSTANCE CONSTRUCTORS ///////////////////////////////////////////////
 
@@ -57,11 +58,16 @@ void Asteroids::Start()
 	Animation *explosion_anim = AnimationManager::GetInstance().CreateAnimationFromFile("explosion", 64, 1024, 64, 64, "explosion_fs.png");
 	Animation *asteroid1_anim = AnimationManager::GetInstance().CreateAnimationFromFile("asteroid1", 128, 8192, 128, 128, "asteroid1_fs.png");
 	Animation *spaceship_anim = AnimationManager::GetInstance().CreateAnimationFromFile("spaceship", 128, 128, 128, 128, "spaceship_fs.png");
+	Animation *extra_life_anim =AnimationManager::GetInstance().CreateAnimationFromFile("extralife", 128, 128, 128, 128, "extralife_fs.png");
+
+
+
 
 	// Create a spaceship and add it to the world
 	mGameWorld->AddObject(CreateSpaceship());
 	// Create some asteroids and add them to the world
-	CreateAsteroids(12);
+	CreateAsteroids(6);
+	CreateExtraLife();
 
 	//Create the GUI
 	CreateGUI();
@@ -162,7 +168,7 @@ void Asteroids::OnTimer(int value)
 	if (value == START_NEXT_LEVEL)
 	{
 		mLevel++;
-		int num_asteroids = 2 + mLevel;
+		int num_asteroids = mLevel;
 		CreateAsteroids(num_asteroids);
 	}
 
@@ -229,6 +235,20 @@ void Asteroids::CreateAsteroids(const uint num_asteroids)
 //		mGameWorld->AddObject(child_asteroid);
 //	}
 //}
+
+void  Asteroids::CreateExtraLife()
+{
+		Animation* anim_ptr = AnimationManager::GetInstance().GetAnimationByName("extralife");
+		shared_ptr<Sprite> ExtraLife_sprite
+			= make_shared<Sprite>(anim_ptr->GetWidth(), anim_ptr->GetHeight(), anim_ptr);
+		ExtraLife_sprite->SetLoopAnimation(true);
+		shared_ptr<GameObject> extra_life = make_shared<ExtraLife>();
+		extra_life->SetBoundingShape(make_shared<BoundingSphere>(extra_life->GetThisPtr(), 12.0f));
+		extra_life->SetSprite(ExtraLife_sprite);
+		extra_life->SetScale(0.08f);
+		mGameWorld->AddObject(extra_life);
+
+}
 
 void Asteroids::CreateGUI()
 {

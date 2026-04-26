@@ -3,6 +3,8 @@
 #include "Bullet.h"
 #include "Spaceship.h"
 #include "BoundingSphere.h"
+#include "Asteroid.h"
+#include "ExtraLife.h"
 
 using namespace std;
 
@@ -101,6 +103,15 @@ bool Spaceship::CollisionTest(shared_ptr<GameObject> o)
 }
 
 void Spaceship::OnCollision(const GameObjectList &objects)
-{
+{	
+
 	mWorld->FlagForRemoval(GetThisPtr());
+
+
+	
+		
+	
+		
+
 }
+    

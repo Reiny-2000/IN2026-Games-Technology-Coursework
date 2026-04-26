@@ -24,6 +24,9 @@ public:
 			mLives -= 1;
 			FirePlayerKilled();
 		}
+		
+
+		
 	}
 
 	void AddListener(shared_ptr<IPlayerListener> listener)
@@ -39,6 +42,7 @@ public:
 			(*lit)->OnPlayerKilled(mLives);
 		}
 	}
+
 
 private:
 	int mLives;

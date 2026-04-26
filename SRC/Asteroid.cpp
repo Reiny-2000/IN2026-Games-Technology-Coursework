@@ -37,7 +37,7 @@ void Asteroid::OnCollision(const GameObjectList& objects) {
 	{
 		if (obj == GetThisPtr()) continue;
 
-		if (obj->GetType() == GameObjectType("Asteroid"))
+		if (obj->GetType() == GameObjectType("Asteroid") || obj->GetType() == GameObjectType("ExtraLife"))
 		{
 			// Get other asteroid velocity
 
@@ -50,7 +50,7 @@ void Asteroid::OnCollision(const GameObjectList& objects) {
 			other->SetVelocity(temp);
 			
 		}
-		else {
+		else if (obj->GetType() == GameObjectType("Bullet") || obj->GetType() == GameObjectType("Spaceship")) {
 			mWorld->FlagForRemoval(GetThisPtr());
 		}
 	}
