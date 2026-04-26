@@ -1,7 +1,7 @@
 #ifndef __SCOREKEEPER_H__
 #define __SCOREKEEPER_H__
 
-#include "GameUtil.h"
+#include "GameUtil.h" 
 
 #include "GameObject.h"
 #include "GameObjectType.h"
@@ -19,10 +19,17 @@ public:
 
 	void OnObjectRemoved(GameWorld* world, shared_ptr<GameObject> object)
 	{
-		if (object->GetType() == GameObjectType("Asteroid")) {
- 			mScore += 10;
+		if (object->GetType() == GameObjectType("Asteroid")){
+			mScore += 5;
 			FireScoreChanged();
 		}
+
+		if (object->GetType() == GameObjectType("Spaceship")) {
+			mScore -= 5;
+			FireScoreChanged();
+		}
+	 
+ 			
 	}
 
 	void AddListener(shared_ptr<IScoreListener> listener)
